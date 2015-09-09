@@ -25,6 +25,7 @@ public void draw()
 {
 	Die one = new Die(10,10);
 	one.show();
+	one.roll();
 }
 
 public void mousePressed()
@@ -35,6 +36,7 @@ public void mousePressed()
 class Die //models one single dice cube
 {
 	//variable declarations here
+	int numRoll;
 	int myX, myY;
 	Die(int x, int y) //constructor
 	{
@@ -45,6 +47,14 @@ class Die //models one single dice cube
 	public void roll()
 	{
 		//your code here
+		if((int)(Math.random()*6+1) == 1)
+		{
+			numRoll = 1;
+		}
+		if((int)(Math.random()*6+1) == 2)
+		{
+			numRoll = 2;
+		}		
 	}
 
 	public void show()
@@ -56,7 +66,14 @@ class Die //models one single dice cube
 			{
 				noStroke();
 				fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-				rect(myX+i,myY+j,50,50,10);				
+				rect(myX+i,myY+j,50,50,10);
+				if(numRoll == 1)
+				{
+					fill(0);
+					ellipse(35+i, 35+j,10,10);
+				}
+
+
 			}
 		
 		}
@@ -64,6 +81,39 @@ class Die //models one single dice cube
 	}
 
 }
+
+/* Dots
+1.
+fill(0);
+ellipse(35+i, 35+j,10,10);
+2.
+fill(0);
+ellipse(50+i, 20+j,10,10);
+ellipse(20+i, 50+j,10,10);
+3.
+fill(0);
+ellipse(50+i, 20+j,10,10);
+ellipse(20+i, 50+j,10,10);
+ellipse(35+i, 35+j,10,10);
+4.
+ellipse(20+i, 20+j,10,10);
+ellipse(50+i, 20+j,10,10);
+ellipse(20+i, 50+j,10,10);
+ellipse(50+i, 50+j,10,10);
+5.
+ellipse(20+i, 20+j,10,10);
+ellipse(50+i, 20+j,10,10);
+ellipse(20+i, 50+j,10,10);
+ellipse(50+i, 50+j,10,10);
+ellipse(35+i, 35+j,10,10);
+6.
+ellipse(20+i, 20+j,10,10);
+ellipse(50+i, 20+j,10,10);
+ellipse(20+i, 50+j,10,10);
+ellipse(50+i, 50+j,10,10);
+ellipse(20+i, 35+j,10,10);
+ellipse(50+i, 35+j,10,10);
+*/
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Dice" };
     if (passedArgs != null) {
