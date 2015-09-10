@@ -1,6 +1,6 @@
 void setup()
 {
-	size(400,400);
+	size(400,450);
 	noLoop();
 	background(0);
 }
@@ -8,8 +8,8 @@ void setup()
 void draw()
 {
 	Die one = new Die(10,10);
-	one.show();
 	one.roll();
+	one.show();
 }
 
 void mousePressed()
@@ -30,15 +30,7 @@ class Die //models one single dice cube
 
 	void roll()
 	{
-		//your code here
-		if((int)(Math.random()*6+1) == 1)
-		{
-			numRoll = 1;
-		}
-		if((int)(Math.random()*6+1) == 2)
-		{
-			numRoll = 2;
-		}		
+		//your code here		
 	}
 
 	void show()
@@ -51,11 +43,55 @@ class Die //models one single dice cube
 				noStroke();
 				fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
 				rect(myX+i,myY+j,50,50,10);
+				numRoll = (int)(Math.random()*6+1);
+
 				if(numRoll == 1)
 				{
 					fill(0);
 					ellipse(35+i, 35+j,10,10);
 				}
+				if(numRoll == 2)
+				{
+					fill(0);
+					ellipse(50+i, 20+j,10,10);
+					ellipse(20+i, 50+j,10,10);
+				}
+				if(numRoll == 3)
+				{
+					fill(0);
+					ellipse(50+i, 20+j,10,10);
+					ellipse(20+i, 50+j,10,10);
+					ellipse(35+i, 35+j,10,10);;
+				}
+				if(numRoll == 4)
+				{
+					fill(0);
+					ellipse(20+i, 20+j,10,10);
+					ellipse(50+i, 20+j,10,10);
+					ellipse(20+i, 50+j,10,10);
+					ellipse(50+i, 50+j,10,10);
+				}
+				if(numRoll == 5)
+				{
+					fill(0);
+					ellipse(20+i, 20+j,10,10);
+					ellipse(50+i, 20+j,10,10);
+					ellipse(20+i, 50+j,10,10);
+					ellipse(50+i, 50+j,10,10);
+					ellipse(35+i, 35+j,10,10);
+				}
+				if(numRoll == 6)
+				{
+					fill(0);
+					ellipse(20+i, 20+j,10,10);
+					ellipse(50+i, 20+j,10,10);
+					ellipse(20+i, 50+j,10,10);
+					ellipse(50+i, 50+j,10,10);
+					ellipse(20+i, 35+j,10,10);
+					ellipse(50+i, 35+j,10,10);
+				}
+				fill(255);
+				text("DICE",180,415);
 
 
 			}
