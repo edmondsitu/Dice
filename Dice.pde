@@ -2,14 +2,77 @@ void setup()
 {
 	size(400,450);
 	noLoop();
-	background(0);
+
 }
 
 void draw()
 {
-	Die one = new Die(10,10);
-	one.roll();
-	one.show();
+		background(0);
+		int sum = 0;
+		for(int x = 15; x < 370; x = x + 60)
+		{
+			for(int y = 15; y < 370; y = y + 60)
+			{
+				Die one = new Die(x+10,y+10);
+				one.roll();
+				one.show();
+				if(one.numRoll <= 6)
+				{
+					sum = sum + one.numRoll;
+				}
+				if(one.numRoll == 1)
+				{
+					fill(0);
+					ellipse(35+x, 35+y,10,10);
+				}
+				if(one.numRoll == 2)
+				{
+					fill(0);
+					ellipse(50+x, 20+y,10,10);
+					ellipse(20+x, 50+y,10,10);
+				}
+				if(one.numRoll == 3)
+				{
+					fill(0);
+					ellipse(50+x, 20+y,10,10);
+					ellipse(20+x, 50+y,10,10);
+					ellipse(35+x, 35+y,10,10);;
+				}
+				if(one.numRoll == 4)
+				{
+					fill(0);
+					ellipse(20+x, 20+y,10,10);
+					ellipse(50+x, 20+y,10,10);
+					ellipse(20+x, 50+y,10,10);
+					ellipse(50+x, 50+y,10,10);
+				}
+				if(one.numRoll == 5)
+				{
+					fill(0);
+					ellipse(20+x, 20+y,10,10);
+					ellipse(50+x, 20+y,10,10);
+					ellipse(20+x, 50+y,10,10);
+					ellipse(50+x, 50+y,10,10);
+					ellipse(35+x, 35+y,10,10);
+				}
+				if(one.numRoll == 6)
+				{
+					fill(0);
+					ellipse(20+x, 20+y,10,10);
+					ellipse(50+x, 20+y,10,10);
+					ellipse(20+x, 50+y,10,10);
+					ellipse(50+x, 50+y,10,10);
+					ellipse(20+x, 35+y,10,10);
+					ellipse(50+x, 35+y,10,10);
+				}
+				fill(255);
+				text(sum,180,415);
+				System.out.println(sum);
+
+
+			}
+		
+		}
 }
 
 void mousePressed()
@@ -24,6 +87,7 @@ class Die //models one single dice cube
 	int myX, myY;
 	Die(int x, int y) //constructor
 	{
+		numRoll = (int)(Math.random()*6+1);
 		myX = x;
 		myY = y;
 	}
@@ -36,68 +100,9 @@ class Die //models one single dice cube
 	void show()
 	{
 		//your code here
-		for(int i = 15; i < 370; i = i + 60)
-		{
-			for(int j = 15; j < 370; j = j + 60)
-			{
-				noStroke();
-				fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-				rect(myX+i,myY+j,50,50,10);
-				numRoll = (int)(Math.random()*6+1);
-
-				if(numRoll == 1)
-				{
-					fill(0);
-					ellipse(35+i, 35+j,10,10);
-				}
-				if(numRoll == 2)
-				{
-					fill(0);
-					ellipse(50+i, 20+j,10,10);
-					ellipse(20+i, 50+j,10,10);
-				}
-				if(numRoll == 3)
-				{
-					fill(0);
-					ellipse(50+i, 20+j,10,10);
-					ellipse(20+i, 50+j,10,10);
-					ellipse(35+i, 35+j,10,10);;
-				}
-				if(numRoll == 4)
-				{
-					fill(0);
-					ellipse(20+i, 20+j,10,10);
-					ellipse(50+i, 20+j,10,10);
-					ellipse(20+i, 50+j,10,10);
-					ellipse(50+i, 50+j,10,10);
-				}
-				if(numRoll == 5)
-				{
-					fill(0);
-					ellipse(20+i, 20+j,10,10);
-					ellipse(50+i, 20+j,10,10);
-					ellipse(20+i, 50+j,10,10);
-					ellipse(50+i, 50+j,10,10);
-					ellipse(35+i, 35+j,10,10);
-				}
-				if(numRoll == 6)
-				{
-					fill(0);
-					ellipse(20+i, 20+j,10,10);
-					ellipse(50+i, 20+j,10,10);
-					ellipse(20+i, 50+j,10,10);
-					ellipse(50+i, 50+j,10,10);
-					ellipse(20+i, 35+j,10,10);
-					ellipse(50+i, 35+j,10,10);
-				}
-				fill(255);
-				text("DICE",180,415);
-
-
-			}
-		
-		}
-
+		noStroke();
+		fill((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+		rect(myX,myY,50,50,10);
 	}
 
 }
